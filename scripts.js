@@ -10,7 +10,7 @@ window.addEventListener("load", function() {
         if (confirmation === true) {
             document.getElementById("flightStatus").innerHTML = "Shuttle in flight.";
             document.getElementById("shuttleBackground").style.backgroundColor = "blue";
-            document.getElementById("spaceShuttleHeight").innerHTML = 100000;
+            document.getElementById("spaceShuttleHeight").innerHTML = 10000;
         }
     });
 
@@ -34,9 +34,35 @@ window.addEventListener("load", function() {
 
     let rocket = document.getElementById("rocket");
     let btnUp = document.getElementById("up");
+
+    rocket.style.position = "inherit";
+    rocket.style.top = "0px";
+    rocket.style.right = "0px";
+
     btnUp.addEventListener("click", function() {
-        rocket.style.top = 10 + "px";
-        parseInt(document.getElementById("spaceShuttleHeight").innerHTML += 10000);
+        rocket.style.top = parseInt(rocket.style.top) - 10 + 'px';
+        let shuttleHeight = document.getElementById("spaceShuttleHeight").innerHTML;
+        document.getElementById("spaceShuttleHeight").innerHTML = parseInt(shuttleHeight) + Number(10000);
+    });
+
+    let right = document.getElementById("right");
+
+    right.addEventListener("click", function() {
+        rocket.style.right = parseInt(rocket.style.right) - 10 + 'px';
+    });
+
+    let down = document.getElementById("down");
+
+    down.addEventListener("click", function() {
+        rocket.style.top = parseInt(rocket.style.top) + 10 + 'px';
+        let shuttleHeight = document.getElementById("spaceShuttleHeight").innerHTML;
+        document.getElementById("spaceShuttleHeight").innerHTML = parseInt(shuttleHeight) - Number(10000);
+    });
+
+    let left = document.getElementById("left");
+
+    left.addEventListener("click", function() {
+        rocket.style.right = parseInt(rocket.style.right) + 10 + 'px';
     });
 });
 // Remember to pay attention to page loading!
